@@ -1,0 +1,42 @@
+/**
+ * Container With Most Water
+ * Solved
+ * You are given an integer array heights where heights[i] represents the height of the
+ * ith bar.
+ * You may choose any two bars to form a container. Return the maximum amount of water a container can store.
+ * Example 1:
+ * Input: height = [1,7,2,5,4,7,3,6]
+ *
+ * Output: 36
+ * Example 2:
+ *
+ * Input: height = [2,2,2]
+ *
+ * Output: 4
+ * Constraints:
+ *
+ * 2 <= height.length <= 1000
+ * 0 <= height[i] <= 1000
+ */
+public class ContainersWithMostWater {
+    public static void main(String[] args) {
+        int[] heights = {1,7,2,5,4,7,3,6};
+        System.out.println(mostWater(heights));
+    }
+
+    public static int mostWater(int[] heights) {
+        int low = 0;
+        int high = heights.length - 1;
+        int maxWater = 0;
+        while (low < high) {
+            int water = Math.min(heights[high], heights[low])*(high - low);
+            maxWater = Math.max(water, maxWater);
+            if (heights[high] < heights[low]) {
+                high--;
+            } else {
+                low++;
+            }
+        }
+        return maxWater;
+    }
+}
