@@ -35,8 +35,9 @@ public class CourseSchedule {
 
         int[] indegrees = new int[numOfCourses];
         for (int[] pre: prerequisites) {
-            indegrees[pre[1]]++;
-            adjList.get(pre[0]).add(pre[1]);
+            // pre[1] -> pre[0]
+            indegrees[pre[0]]++;
+            adjList.get(pre[1]).add(pre[0]);
         }
 
         Queue<Integer> queue = new LinkedList<>();
@@ -71,7 +72,8 @@ public class CourseSchedule {
         }
 
         for (int[] pre: prerequisites) {
-            adjList.get(pre[0]).add(pre[1]);
+            // pre[1] -> pre[0]
+            adjList.get(pre[1]).add(pre[0]);
         }
 
         for(int i = 0; i < numOfCourses; i++) {
