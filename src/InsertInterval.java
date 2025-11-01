@@ -37,13 +37,36 @@ import java.util.List;
  */
 public class InsertInterval {
     public static void main(String[] args) {
-        int[][] intervals = {{1,3}, {4,6}};
-        int[] newInterval = {2,5};
-        System.out.println(Arrays.toString(insert(intervals, newInterval)));
+        int[][] intervals = {{1,3}, {5,6}};
+        int[] newInterval = {2,4};
+        int [][] newIntervals = insert(intervals, newInterval);
+        for (int[] interval: newIntervals) {
+            System.out.print(Arrays.toString(interval));
+        }
+
     }
 
     public static int[][] insert(int[][] intervals, int[] newInterval) {
-        return new int[][]{};
+        List<int[]> result = new ArrayList<>();
+        int i = 0;
+        // add all intervals which are before newInterval
+        while (i < intervals.length && intervals[i][1] < newInterval[0]) {
+            result.add(intervals[i]);
+            i++;
+        }
+        // merge overlapping intervals
+        while (i < intervals.length && intervals[i][0] <= newInterval[1]) {
+            newInterval[0] = Math.min(newInterval[0], intervals[i][0]);
+            newInterval[1] = Math.max(newInterval[1], intervals[i][1]);
+            i++;
+        }
+        result.add(newInterval);
+        // add remaining intervals
+        while (i < intervals.length) {
+            result.add(intervals[i]);
+            i++;
+        }
+        return result.toArray(new int[result.size()][]);
     }
 }
 
