@@ -26,7 +26,7 @@ public class UniquePaths {
         int m = 3;
         int n = 6;
         System.out.println(uniquePathsDfs(m,n));
-        System.out.println(uniquePathsDfs(m, n));
+        System.out.println(uniquePathsDfsMemo(m, n));
         System.out.println(uniquePathsDp(m, n));
         System.out.println(uniquePathsDpSpaceOptimized(m, n));
     }

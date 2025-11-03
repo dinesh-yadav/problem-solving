@@ -3,7 +3,7 @@ public class MaximizeSumOfSquareOfDigits {
         int num = 2;
         int sum = 3;
         System.out.println("Ans: " + maxSumOfSquareOfDigits(num, sum));
-        System.out.println("Ans: " + maxSumOfSquareOfDigitsEasy(2, 19));
+        System.out.println("Ans: " + maxSumOfSquareOfDigitsEasy(2, 3));
     }
 
     public static String maxSumOfSquareOfDigits(int num, int sum) {
