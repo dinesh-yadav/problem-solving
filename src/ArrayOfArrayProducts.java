@@ -16,13 +16,15 @@ import java.util.Arrays;
  */
 public class ArrayOfArrayProducts {
     public static void main(String[] args) {
-        int []input = {8, 10, 2};
+//        int []input = {8, 10, 2};
+        int []input = {1};
         System.out.println(Arrays.toString(arrayOfArrayProducts(input)));
     }
 
     public static int[] arrayOfArrayProducts(int[] input) {
-        if (input == null || input.length == 0) {
-            return input;
+
+        if (input == null || input.length == 0 || input.length == 1) {
+            return new int[0];
         }
         int sizeOfArray = input.length;
         int[] result = new int[input.length];
@@ -33,7 +35,6 @@ public class ArrayOfArrayProducts {
             prev *= input[i];
         }
 
-        System.out.println(Arrays.toString(result));
         prev = 1;
         for (int i = sizeOfArray - 1; i >= 0; i--) {
             result[i] *= prev;
