@@ -55,8 +55,6 @@ public class DecryptMessage {
      *  * Step 2:	100	214	319	428	529
      *  * Step 3:	100	110	111	116	113
      *  * Encrypted message:	d	n	o	t	q
-     * @param word
-     * @return
      */
     static String decrypt(String word) {
         // dbotq
