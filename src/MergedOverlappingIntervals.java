@@ -28,7 +28,7 @@ public class MergedOverlappingIntervals {
         int[][] input = {{1,4}, {1,5}, {8,10}};
         int[][] output = merge(input);
         for (int i = 0; i < output.length; i++)
-            System.out.println(Arrays.toString(output[i]));
+            System.out.print(Arrays.toString(output[i]));
     }
 
     public static int[][] merge(int[][] intervals) {
