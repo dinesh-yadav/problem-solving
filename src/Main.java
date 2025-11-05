@@ -5,10 +5,10 @@ public class Main {
        String[]  words = {"word","world","row"};
        String order = "worldabcefghijkmnpqstuvxyz";
        int[] a = {1,2};
-       String[] str = {"abc", "bcd"};
+       String[] str = {"apple","app"}; // {"abcd", "abc", "bcd"};
       //  words = ["apple","app"], order = "abcdefghijklmnopqrstuvwxyz"
       //System.out.println(""+ solution("hlabcdefgijkmnopqrstuvwxyz", new String[]{"hi","lets"}));
-        System.out.println(solution(order, words));
+        System.out.println(solution(order, str));
     }
     //["hi","lets"],
     public static boolean solution(String order, String[] words) {
@@ -39,7 +39,9 @@ public class Main {
                 return orderMap[ch1 - 'a'] <= orderMap[ch2 - 'a'];
             }
         }
-        return w1.length() > w2.length();
+        System.out.println(w1 + " " + w2);
+        System.out.println(w1.length() > w2.length());
+        return w1.length() < w2.length();
     }
 }
 

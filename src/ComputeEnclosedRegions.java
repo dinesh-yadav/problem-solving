@@ -77,7 +77,7 @@ public class ComputeEnclosedRegions {
                 dfs(matrix, i, cols - 1);
         }
 
-        // mark 'O' to '#' and '#' to 'O'
+        // mark 'O' to 'X' and '#' to 'O'
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 if (matrix[i][j] == 'O')

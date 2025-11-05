@@ -1,7 +1,8 @@
 import java.util.Arrays;
 
 /**
- * Given two strings s1 and s2, return the length of the longest common subsequence of characters between the two strings.
+ * Given two strings s1 and s2, return the length of the longest common subsequence
+ * of characters between the two strings.
  *
  * Input-Output
  *
