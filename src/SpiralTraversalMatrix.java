@@ -20,9 +20,9 @@ import java.util.ArrayList;
 public class SpiralTraversalMatrix {
     public static void main(String[] args) {
         int[][] matrix = {
-                {1,2,3},
-                {4,5,6},
-                {7,8,9}
+                {1,2,3,4},
+                {5,6,7,8},
+                {9,10,11,12}
         };
 
         System.out.println(spiralTraversal(matrix));
@@ -49,14 +49,14 @@ public class SpiralTraversalMatrix {
             }
             right--;
 
-            if (left <= right) {
+            if (top <= bottom) {
                 for (int col = right; col >= left; col--) {
                     result.add(matrix[bottom][col]);
                 }
             }
             bottom--;
 
-            if (top <= bottom) {
+            if (left <= right) {
                 for(int row = bottom; row >= top; row--) {
                     result.add(matrix[row][left]);
                 }
