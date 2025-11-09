@@ -36,6 +36,21 @@ public class LongestConsecutiveSequence {
         System.out.println(lenOfLongestConsecutiveSequence(nums));
     }
 
+    /**
+     * Algo
+     * - put all the elements in the set, so that we will have all the distinct
+     * numbers.
+     * - run a loop on all the numbers in the set.
+     * - we will check only the numbers num for which num - 1 is not present.
+     * because if num - 1 is present then num - 1 should have been the first number
+     * of the sequence.
+     * then if num - 1 is not present in the set, we will run a loop to check
+     * if num + 1, num + 2 etc are present and count the length.
+     * in the end, we will get the maxLength by comparing current length with
+     * maxLength.
+     * @param nums
+     * @return
+     */
     private static int lenOfLongestConsecutiveSequence(int[] nums) {
         if (nums == null || nums.length == 0)
             return 0;
