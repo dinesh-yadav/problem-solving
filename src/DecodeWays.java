@@ -49,7 +49,7 @@ import java.util.Arrays;
 public class DecodeWays {
 
     public static void main(String[] args) {
-        String s = "101";
+        String s = "06";
         System.out.println(decodeWays(s));
     }
     public static int decodeWays(String s) {
