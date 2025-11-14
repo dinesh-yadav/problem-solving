@@ -30,6 +30,8 @@ public class LongestPalindromeSubstring {
         System.out.println(longestPalindrome(s));
     }
 
+
+    // time O(n^2)
     static String longestPalindrome(String s) {
         if (s.isEmpty() || s.length() == 1) {
             return s;
