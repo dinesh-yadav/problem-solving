@@ -74,10 +74,10 @@ public class BalancedBinaryTree {
 
         int[] left = dfs(node.left);
         int[] right = dfs(node.right);
-        boolean isBalance = (left[0] == 1
+        boolean isbalanced = (left[0] == 1
                 && right[0] == 1
                 && Math.abs(left[1] - right[1]) <= 1);
         int height = 1 + Math.max(left[1], right[1]);
-        return new int[]{isBalance?1:0, height};
+        return new int[]{isbalanced?1:0, height};
     }
 }
