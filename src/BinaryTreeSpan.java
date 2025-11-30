@@ -1,7 +1,7 @@
 /**
  * Binary Tree Span
  * Given the root node of a binary tree, determine the longest path that exists between any two nodes in the tree.
- *
+ * get the diameter of binary tree.
  * Input-Output
  *
  * Example 1
@@ -54,10 +54,12 @@ public class BinaryTreeSpan {
         right.right.right = new TreeNode(8);
         binaryTreeSpan(root);
         System.out.println(maximum);
+        System.out.println(binaryTreeDiameter(root));
         maximum = 0;
         TreeNode root1 = new TreeNode(1);
         binaryTreeSpan(root1);
         System.out.println(maximum);
+        System.out.println(binaryTreeDiameter(root1));
     }
 
     public static int binaryTreeSpan(TreeNode node) {
@@ -71,5 +73,22 @@ public class BinaryTreeSpan {
         maximum = Math.max(maximum, leftHeight + rightHeight);
         return height;
 
+    }
+
+    public static int binaryTreeDiameter(TreeNode node) {
+        if (node == null)
+            return 0;
+        int leftHeight = height(node.left);
+        int rightHeight = height(node.right);
+        int diameter = Math.max(binaryTreeDiameter(node.left),
+                binaryTreeDiameter(node.right));
+        return Math.max(diameter, leftHeight + rightHeight);
+
+    }
+
+    static int height(TreeNode node) {
+        if (node == null)
+            return 0;
+        return 1 + Math.max(height(node.left), height(node.right));
     }
 }
