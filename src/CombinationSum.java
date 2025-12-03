@@ -33,7 +33,7 @@ import java.util.List;
 
 public class CombinationSum {
     public static void main(String[] args) {
-        int[] nums = {2, 5, 6, 9};
+        int[] nums = {2, 5, 6, 7, 7, 9};
         int target = 9;
         System.out.println(combinationSum(nums, target));
 
@@ -42,7 +42,8 @@ public class CombinationSum {
 
     private static List<List<Integer>> combinationSum(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<>();
-        combinationSumHelper(nums, target, result, new ArrayList<>(), 0);
+//        combinationSumHelper(nums, target, result, new ArrayList<>(), 0);
+        backtrack(nums, result, new ArrayList<>(), target, 0);
         return result;
     }
 
@@ -86,5 +87,25 @@ public class CombinationSum {
             dfs(j, nums, result, current, target, total + nums[j]);
             current.remove(current.size() - 1);
         }
+    }
+
+    static void backtrack(int[] nums, List<List<Integer>> result,
+                   List<Integer> curr, int target, int index) {
+        if (target < 0)
+            return;
+        if (0 == target) {
+            result.add(new ArrayList<>(curr));
+            return;
+        }
+
+
+
+        for (int i = index; i < nums.length; i++) {
+            curr.add(nums[i]);
+            backtrack(nums, result, curr, target - nums[i], i);
+            curr.remove(curr.size() - 1);
+
+        }
+
     }
 }
