@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * The Water Jug Problem - Count Min Steps
  * Last Updated : 23 Jul, 2025
@@ -33,10 +36,14 @@
  */
 public class WaterJugProblem {
     public static void main(String[] args) {
-        System.out.println(minSteps(2, 3, 5));
-        System.out.println(minSteps(2, 4, 3));
-        System.out.println(minSteps(3, 5, 4));
-        System.out.println(minSteps(2, 3, 1));
+        System.out.println("min steps -> GCD: " + minSteps(2, 3, 5)
+                            + " BFS: " + minStepsBfs(2, 3, 5));
+        System.out.println("min steps -> GCD: " + minSteps(2, 4, 3)
+                + " BFS: " + minStepsBfs(2, 4, 3));
+        System.out.println("min steps -> GCD: " + minSteps(3, 5, 4)
+                + " BFS: " + minStepsBfs(3, 5, 4));
+        System.out.println("min steps -> GCD: " + minSteps(2, 3, 1)
+                + " BFS: " + minStepsBfs(2, 3, 1));
     }
 
     static int minSteps(int m, int n, int d) {
@@ -87,5 +94,64 @@ public class WaterJugProblem {
             }
         }
         return steps;
+    }
+
+    static int minStepsBfs(int m, int n, int d) {
+        if (Math.max(m, n) < d)
+            return -1;
+        boolean[][] visited = new boolean[m + 1][n + 1];
+        Queue<int[]> queue = new LinkedList<>();
+        queue.add(new int[]{0, 0, 0});
+        visited[0][0] = true;
+
+        while(!queue.isEmpty()) {
+            int[] val = queue.poll();
+            int jug1 = val[0];
+            int jug2 = val[1];
+            int steps = val[2];
+            if (jug1 == d || jug2 == d) {
+                visited[jug1][jug2] = true;
+                return steps;
+            }
+
+            // fill jug1
+            if (!visited[m][jug2]) {
+                visited[m][jug2] = true;
+                queue.add(new int[]{m, jug2, steps + 1});
+            }
+
+            //fill jug2
+            if (!visited[jug1][n]) {
+                visited[jug1][n] = true;
+                queue.add(new int[]{jug1, n, steps + 1});
+            }
+
+            //empty jug1
+            if (!visited[0][jug2]) {
+                visited[0][jug2] = true;
+                queue.add(new int[]{0, jug2, steps + 1});
+            }
+
+            //empty jug2
+            if (!visited[jug1][0]) {
+                visited[jug1][0] = true;
+                queue.add(new int[]{jug1, 0, steps + 1});
+            }
+
+            // pour from jug1 to jug2
+            int pour = Math.min(jug1, n - jug2);
+            if (!visited[jug1 - pour][jug2 + pour]) {
+                visited[jug1 - pour][jug2 + pour] = true;
+                queue.add(new int[]{jug1 - pour, jug2 + pour, steps + 1});
+            }
+
+            // pour from jug2 to jug1
+            pour = Math.min(m - jug1, jug2);
+            if (!visited[jug1 + pour][jug2 - pour]) {
+                visited[jug1 + pour][jug2 - pour] = true;
+                queue.add(new int[]{jug1 + pour, jug2 - pour, steps + 1});
+            }
+        }
+        return -1;
     }
 }
