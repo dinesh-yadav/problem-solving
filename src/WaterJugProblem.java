@@ -46,6 +46,10 @@ public class WaterJugProblem {
                 + " BFS: " + minStepsBfs(2, 3, 1));
     }
 
+    /**
+     * Time Complexity: O(N + M)
+     * Auxiliary Space: O(1)
+     */
     static int minSteps(int m, int n, int d) {
         if (m > n) {
             int tmp = m;
@@ -96,6 +100,10 @@ public class WaterJugProblem {
         return steps;
     }
 
+    /**
+     * Time Complexity: O(n*m), Where n and m are the quantity of jug1 and jug2, respectively.
+     * Auxiliary Space: O(n*m).
+     */
     static int minStepsBfs(int m, int n, int d) {
         if (Math.max(m, n) < d)
             return -1;

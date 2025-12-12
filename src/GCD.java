@@ -25,6 +25,9 @@ public class GCD {
         System.out.println(Arrays.toString(addFraction(num1, num2)));
     }
 
+    /*
+    Time Complexity : O(log(min(a, b))
+     */
     static int gcd(int a, int b) {
         return b == 0 ? a : gcd(b, a % b);
     }
