@@ -11,11 +11,14 @@ public class GCD {
         System.out.println(gcd(a, b));
         System.out.println(iterativeGcd(a, b));
         System.out.println(lcm(a, b));
+        int[] nums = new int[]{a, b, 40};
+        System.out.println(lcmOfArray(nums));
 
         System.out.println(gcd(99, 81));
         System.out.println(iterativeGcd(99, 81));
         int[] arr = {99, 81, 18};
         System.out.println(gcdOfArray(arr));
+        System.out.println(lcmOfArray(arr));
 
         int[] num1 = {1, 2};
         int[] num2 = {3, 2};
@@ -52,6 +55,15 @@ public class GCD {
                 return 1;
         }
         return gcd;
+    }
+
+    static int lcmOfArray(int[] arr) {
+        int lcm = arr[0];
+        int n = arr.length;
+        for (int i = 1; i < n; i++) {
+            lcm = lcm(lcm, arr[i]);
+        }
+        return lcm;
     }
 
     static int[] addFraction(int[] a, int[] b) {
