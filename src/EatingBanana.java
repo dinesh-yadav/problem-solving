@@ -54,7 +54,8 @@ public class EatingBanana {
     static long calculateTime(int rate, int[] piles) {
         long time = 0;
         for (int num: piles) {
-            time += (num + rate - 1)/rate;
+//            time += (num + rate - 1)/rate;
+            time += Math.ceil(num/rate);
         }
         return time;
     }

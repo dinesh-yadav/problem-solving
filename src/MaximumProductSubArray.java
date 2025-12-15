@@ -36,7 +36,7 @@ public class MaximumProductSubArray {
             return 0;
         }
 
-        int maxProduct = nums[0];
+        int maxProduct = Integer.MIN_VALUE;
         int max = 1;
         int min = 1;
         for (int num: nums) {

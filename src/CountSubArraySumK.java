@@ -40,12 +40,14 @@ public class CountSubArraySumK {
         for (int i = 0; i < nums.length; i++) {
             sum += nums[i];
 
-            int key = k - sum;
+            //int key = k - sum;
+            int key = sum - k;
             if (keyToSum.containsKey(key)) {
                 count += keyToSum.get(key);
             }
 
-            keyToSum.put(key, keyToSum.getOrDefault(key, 0) + 1);
+            //keyToSum.put(key, keyToSum.getOrDefault(key, 0) + 1);
+            keyToSum.put(sum, keyToSum.getOrDefault(sum, 0) + 1);
         }
 
         return count;

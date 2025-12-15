@@ -27,7 +27,7 @@ public class Search2DMatrix {
     public static void main(String[] args) {
        int[][] matrix = {{1,2,4,8},{10,11,12,13},{14,20,30,40}};
        int target = 10;
-        System.out.println(searchMatrix(matrix, 10));
+        System.out.println(searchMatrix(matrix, target));
     }
 
     static boolean searchMatrix(int[][] matrix, int target) {

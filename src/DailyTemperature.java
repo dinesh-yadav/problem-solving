@@ -24,8 +24,9 @@ import java.util.Stack;
  */
 public class DailyTemperature {
     public static void main(String[] args) {
-        int[] temp = {22, 21, 20};//{30,38,30,36,35,40,28};
+        int[] temp = {30,38,30,36,35,40,28}; //{22, 21, 20};//
         System.out.println(Arrays.toString(nextHighTemperature(temp)));
+        System.out.println(Arrays.toString(nextHighTemperature1(temp)));
     }
 
     static int[] nextHighTemperature(int[] temp) {
@@ -38,6 +39,20 @@ public class DailyTemperature {
                 result[pair[1]] = i - pair[1];
             }
             stack.push(new int[]{temp[i], i});
+        }
+        return result;
+    }
+
+    static int[] nextHighTemperature1(int[] temp) {
+        int n = temp.length;
+        int[] result = new int[n];
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < n; i++) {
+            while(!stack.isEmpty() && temp[i] > temp[stack.peek()]) {
+                int index = stack.pop();
+                result[index] = i - index;
+            }
+            stack.push(i);
         }
         return result;
     }
