@@ -24,6 +24,7 @@ public class ClimbingStairs {
         System.out.println(waysToClimbingStairsWithCaching(n));
         System.out.println(waysToClimbingStairsDP(n));
         System.out.println(waysToClimbingStairsDPSpaceOptimization(n));
+        System.out.println(ways(n));
     }
 
     private static int waysToClimbingStairs(int n) {
@@ -78,5 +79,11 @@ public class ClimbingStairs {
             dp1 = tmp;
         }
         return dp2;
+    }
+
+    static int ways(int n) {
+        if (n <= 1) return 1;
+        if (n == 2) return 2;
+        return ways(n-1) + ways(n - 2);
     }
 }
