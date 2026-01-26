@@ -71,7 +71,8 @@ public class AllPathsSumEqualToK {
         right.right = new TreeNode(4);
         int target = 8;
 //        System.out.println(allPathsSumEqualToK(root, target));
-        System.out.println(allPathsSumEqualToKWithMap(root, target));
+//        System.out.println(allPathsSumEqualToKWithMap(root, target));
+        System.out.println(allPathsSumEqualToK1(root, target));
     }
 
     //O(n^2) time and O(n) space
@@ -112,6 +113,26 @@ public class AllPathsSumEqualToK {
         helperMap(node.left, target, currentSum);
         helperMap(node.right, target, currentSum);
         map.put(currentSum, map.get(currentSum) - 1);
+    }
+
+
+    //O(n^2) time and O(n) space
+    private static int allPathsSumEqualToK1(TreeNode node, int target) {
+        if (node == null)
+            return 0;
+        int rootedPathSum = helper1(target, node);
+        return rootedPathSum + allPathsSumEqualToK1(node.left, target) + allPathsSumEqualToK1(node.right, target);
+    }
+
+    private static int helper1(int target, TreeNode node) {
+        if (node == null)
+            return 0;
+        int count = 0;
+        if (node.val == target)
+            count++;
+        count += helper1(target - node.val, node.left);
+        count += helper1(target - node.val, node.right);
+        return count;
     }
 
 }
